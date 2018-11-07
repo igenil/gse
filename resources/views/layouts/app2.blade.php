@@ -28,14 +28,10 @@
                     </button>
                     <div>
                     <!-- Branding Image -->
-                    <p class="navbar-brand">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
-                    </p>
-                    <a class="navbar-brand"  href="{{ url('/company') }}">Empresas</a>
-                    <a class="navbar-brand"  href="{{ url('/grade') }}">Ciclos</a>
-                    <a class="navbar-brand"  href="{{ url('/student') }}">Alumnos</a>
-                    <a class="navbar-brand"  href="{{ url('/petition') }}">Solicitudes</a>
-                    <a class="navbar-brand"  href="{{ url('/') }}">Listados</a>
+                    </a>
+
                     </div>
                 </div>
 
