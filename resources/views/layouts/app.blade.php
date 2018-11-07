@@ -26,11 +26,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
+                    <div>
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    <a class="navbar-brand"  href="{{ url('/') }}">Empresas</a>
+                    <a class="navbar-brand"  href="{{ url('/') }}">Ciclos</a>
+                    <a class="navbar-brand"  href="{{ url('/') }}">Alumnos</a>
+                    <a class="navbar-brand"  href="{{ url('/') }}">Solicitudes</a>
+                    <a class="navbar-brand"  href="{{ url('/') }}">Listados</a>
+                    </div>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
