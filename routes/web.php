@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('company', 'CompanyController@index');
 Route::get('grade', 'GradeController@index');
+Route::delete('grade/{id}', 'GradeController@destroy');
 Route::get('student', 'StudentController@index');
 Route::get('petition', 'PetitionController@index');
 

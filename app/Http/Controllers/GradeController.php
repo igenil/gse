@@ -81,6 +81,8 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $grade = grade::find($id);
+        $grade->delete();
+        return view('grade.detail',compact('grade'));
     }
 }
