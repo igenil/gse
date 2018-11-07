@@ -15,10 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/company', 'CompanyController@show');
-Route::get('/grade', 'GradeController@show');
-Route::get('/student', 'StudentController@show');
-Route::get('/petition', 'PetitionController@show');
+
+Route::get('company', 'CompanyController@index');
+Route::get('grade', 'GradeController@index');
+Route::get('student', 'StudentController@index');
+Route::get('petition', 'PetitionController@index');
 
 Auth::routes();
 

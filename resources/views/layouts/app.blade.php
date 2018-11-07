@@ -31,10 +31,10 @@
                     <p class="navbar-brand">
                         {{ config('app.name', 'Laravel') }}
                     </p>
-                    <a class="navbar-brand"  href="{{ url('/company') }}">Empresas</a>
-                    <a class="navbar-brand"  href="{{ url('/grade') }}">Ciclos</a>
-                    <a class="navbar-brand"  href="{{ url('/student') }}">Alumnos</a>
-                    <a class="navbar-brand"  href="{{ url('/petition') }}">Solicitudes</a>
+                    <a class="navbar-brand"  href="{{ url('/company') }}">Companies</a>
+                    <a class="navbar-brand"  href="{{ url('/grade') }}">Grades</a>
+                    <a class="navbar-brand"  href="{{ url('/student') }}">Students</a>
+                    <a class="navbar-brand"  href="{{ url('/petition') }}">Petitions</a>
                     <a class="navbar-brand"  href="{{ url('/') }}">Listados</a>
                     </div>
                 </div>
