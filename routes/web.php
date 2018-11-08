@@ -19,8 +19,10 @@ Route::get('/', function () {
 Route::get('company', 'CompanyController@index');
 Route::get('grade', 'GradeController@index');
 Route::get('addcompany', 'CompanyController@indexaddcompany');
+Route::get('addgrade', 'GradeController@indexaddgrade');
 
 Route::post('addcompany', 'CompanyController@store');
+Route::post('addgrade', 'GradeController@store');
 
 Route::delete('grade/{id}', 'GradeController@destroy');
 Route::delete('company/{id}', 'CompanyController@destroy');

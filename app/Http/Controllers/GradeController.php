@@ -17,6 +17,11 @@ class GradeController extends Controller
         $grades = grade::all();
         return view("grade.detail",compact('grades'));
     }
+    public function indexaddgrade()
+    {
+        $grades = grade::all();
+        return view("grade.create");
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +41,8 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Grade::create(request()->all());
+        return redirect('/grade')->with('message', ['success', __("Grade created successfully")]);
     }
 
     /**

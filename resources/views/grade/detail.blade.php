@@ -27,7 +27,11 @@
                 </td>
             </tr>
             @endforeach   
-            <td><button type="submit" class="btn btn-success">Add Grade</button></td>
+            <td>
+                <a href="{{ url('/addgrade') }}">  
+                    <button type="submit" class="btn btn-success">Add Grade</button>
+                </a>
+            </td>
             <td></td>
             <td></td>
             <td></td>
