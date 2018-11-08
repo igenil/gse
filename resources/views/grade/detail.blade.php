@@ -18,7 +18,7 @@
                 <td>{{$grade->level}}</td>
                 <td><button class = "btn btn-secondary">Edit</button></td>
                 <td>
-                <form action="{{action('GradeController@destroy', $grade->id)}}" method="post">
+                <form action="grade/{{ $grade->id}}" method="post">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
                     <button class="btn btn-danger" type="submit">Delete</button>
