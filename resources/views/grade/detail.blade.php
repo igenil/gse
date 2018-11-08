@@ -2,8 +2,8 @@
 @section('content')
 <br>
 <br>
-<table class="table table-striped" style="width: 40%; text-align: left; margin: 0 auto;">
-        <thead style="background-color: #b8cced;">
+<table class="table table-striped table-hover" style="width: 80%; text-align: left; margin: 0 auto;">
+        <thead style="background-color: #b9cced;">
             <tr>
               <td>Name</td>
               <td>Level</td>
@@ -28,6 +28,7 @@
             </tr>
             @endforeach   
             <td><button type="submit" class="btn btn-success">Add Grade</button></td>
+            <td></td>
             <td></td>
             <td></td>
         </tbody>
