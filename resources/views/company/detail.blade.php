@@ -20,7 +20,7 @@
                 <td>{{$company->cp}}</td>
                 <td><button class = "btn btn-secondary">Edit</button></td>
                 <td>
-                <form action="{{action('CompanyController@destroy', $company->id)}}" method="post">
+                <form action="company/{{$company->id}}" method="post">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
                     <button class="btn btn-danger" type="submit">Delete</button>
@@ -29,7 +29,9 @@
                 </td>
             </tr>
             @endforeach   
-            <td><button type="submit" class="btn btn-success">Add Company</button></td>
+            <td><a href="{{ url('/addcompany') }}">
+                    <button type="submit" class="btn btn-success">Add Company</button></td>
+                </a>
             <td></td>
             <td></td>
             <td></td>

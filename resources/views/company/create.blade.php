@@ -1,4 +1,4 @@
-<form method="POST" action="companies">
+<form method="POST" action="{{url('/addcompany')}}">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="name" class="col-md-12 control-label">
@@ -14,10 +14,10 @@
     old('city') }}" />
     </div>
     <div class="form-group">
-        <label for="CP" class="col-md-12 control-label">
-            {{ __("CP") }}
+        <label for="cp" class="col-md-12 control-label">
+            {{ __("cp") }}
         </label>
-        <input id="CP" class="form-control" name="CP" value="{{ old('CP') }}" />
+        <input id="cp" class="form-control" name="cp" value="{{ old('cp') }}" />
     </div>
     <button type="submit" name="addcompany" class="btn btn-default">
         {{ __("Add Company") }}

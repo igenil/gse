@@ -18,6 +18,11 @@ class CompanyController extends Controller
         return view("company.detail",compact('companies'));
     }
 
+    public function indexaddcompany()
+    {
+        return view("company.create");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,11 +39,11 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         Company::create(request()->all());
 
-        return back()->with('message', ['success', __("Company created successfully")]);
+        return redirect('/company')->with('message', ['success', __("Company created successfully")]);
     }
 
     /**
@@ -86,6 +91,6 @@ class CompanyController extends Controller
         $companies = company::find($id);
         $companies->delete();
         $companies = company::all();
-        return view('company.detail',compact('companies'));
+        return back();
     }
 }

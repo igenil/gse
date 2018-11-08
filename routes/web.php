@@ -18,6 +18,10 @@ Route::get('/', function () {
 
 Route::get('company', 'CompanyController@index');
 Route::get('grade', 'GradeController@index');
+Route::get('addcompany', 'CompanyController@indexaddcompany');
+
+Route::post('addcompany', 'CompanyController@store');
+
 Route::delete('grade/{id}', 'GradeController@destroy');
 Route::delete('company/{id}', 'CompanyController@destroy');
 Route::get('student', 'StudentController@index');
