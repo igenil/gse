@@ -84,6 +84,6 @@ class GradeController extends Controller
         $grades = grade::find($id);
         $grades->delete();
         $grades = grade::all();
-        return view('grade.detail',compact('grades'));
+        return back();
     }
 }
