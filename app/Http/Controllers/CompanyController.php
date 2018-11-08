@@ -36,7 +36,9 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Company::create(request()->all());
+
+        return back()->with('message', ['success', __("Company created successfully")]);
     }
 
     /**
