@@ -18,12 +18,16 @@
                 <td>{{$company->name}}</td>
                 <td>{{$company->city}}</td>
                 <td>{{$company->cp}}</td>
-                <td><button class = "btn btn-secondary">Edit</button></td>
-                <td>
+                <td style="width:1%;">
+                    <a href="editcompany/{{$company->id}}">
+                        <button class = "btn btn-primary"><span class="fas fa-pencil-alt" ></span></button>
+                    </a>
+                </td>
+                <td style="width:1%;">
                 <form action="company/{{$company->id}}" method="post">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                    <button class="btn btn-danger" type="submit">Delete</button>
+                    <button class="btn btn-danger" type="submit"><span class="fas fa-trash-alt" ></span></button>
                 </form>
                 </td>
                 </td>
@@ -32,6 +36,7 @@
             <td><a href="{{ url('/addcompany') }}">
                     <button type="submit" class="btn btn-success">Add Company</button></td>
                 </a>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>

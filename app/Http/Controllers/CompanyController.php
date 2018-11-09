@@ -23,6 +23,11 @@ class CompanyController extends Controller
         return view("company.create");
     }
 
+    public function indexeditcompany($id){
+        $company = company::find($id);
+        return view("company.edit", compact('company'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -77,7 +82,12 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = company::find($id);
+        $company -> name = $request -> name;
+        $company -> city = $request -> city;
+        $company -> cp = $request -> cp;
+        $company -> save();
+        return redirect('/company')->with('message', ['success', __("Company edited successfully")]);
     }
 
     /**
@@ -91,6 +101,6 @@ class CompanyController extends Controller
         $companies = company::find($id);
         $companies->delete();
         $companies = company::all();
-        return back();
+        return redirect('/company')->with('message', ['success', __("Company deleted successfully")]);
     }
 }
