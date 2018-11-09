@@ -16,7 +16,10 @@
             <tr>
                 <td>{{$grade->name}}</td>
                 <td>{{$grade->level}}</td>
-                <td><button class = "btn btn-secondary">Edit</button></td>
+                <td>
+                <a href="editgrade/{{$grade->id}}">
+                    <button class = "btn btn-secondary">Edit</button></td>
+                </a>
                 <td>
                 <form action="grade/{{ $grade->id}}" method="post">
                 {{ method_field('DELETE') }}

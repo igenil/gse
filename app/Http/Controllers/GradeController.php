@@ -23,6 +23,10 @@ class GradeController extends Controller
         return view("grade.create");
     }
 
+    public function indexeditgrade($id){
+        $grades = grade::find($id);
+        return view("grade.edit", compact('grades'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -76,7 +80,12 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $grade = grade::find($id);
+        $grade -> name = $request -> name;
+        $grade -> level = $request -> level;
+
+        $grade -> save();
+        return redirect('/grade')->with('message', ['success', __("Grade edited successfully")]);
     }
 
     /**
@@ -90,6 +99,6 @@ class GradeController extends Controller
         $grades = grade::find($id);
         $grades->delete();
         $grades = grade::all();
-        return back();
+        return redirect('/grade')->with('message', ['success', __("Grade deleted successfully")]);
     }
 }

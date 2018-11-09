@@ -20,14 +20,17 @@ Route::get('company', 'CompanyController@index');
 Route::get('grade', 'GradeController@index');
 Route::get('addcompany', 'CompanyController@indexaddcompany');
 Route::get('addgrade', 'GradeController@indexaddgrade');
+Route::get('student', 'StudentController@index');
+Route::get('petition', 'PetitionController@index');
+Route::get('editgrade/{id}', 'GradeController@indexeditgrade');
 
 Route::post('addcompany', 'CompanyController@store');
 Route::post('addgrade', 'GradeController@store');
 
 Route::delete('grade/{id}', 'GradeController@destroy');
 Route::delete('company/{id}', 'CompanyController@destroy');
-Route::get('student', 'StudentController@index');
-Route::get('petition', 'PetitionController@index');
+
+Route::post('editgrade/{id}', 'GradeController@update');
 
 Auth::routes();
 
