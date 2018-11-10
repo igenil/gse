@@ -16,15 +16,15 @@
             <tr>
                 <td>{{$grade->name}}</td>
                 <td>{{$grade->level}}</td>
-                <td>
+                <td style="width:1%;">
                 <a href="editgrade/{{$grade->id}}">
-                    <button class = "btn btn-secondary">Edit</button></td>
+                    <button class = "btn btn-primary"><span class="fas fa-pencil-alt" ></button></td>
                 </a>
-                <td>
+                <td style="width:1%;">
                 <form action="grade/{{ $grade->id}}" method="post">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                    <button class="btn btn-danger" type="submit">Delete</button>
+                    <button class="btn btn-danger" type="submit"><span class="fas fa-trash-alt" ></button>
                 </form>
                 </td>
                 </td>

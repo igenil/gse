@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\petition;
 class PetitionController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class PetitionController extends Controller
      */
     public function index()
     {
-        //
+        $petition = petition::all();
+        return view("petition.detail",compact('petition'));
     }
 
     /**
