@@ -25,6 +25,10 @@
         <button type="submit" name="addstudent" class="btn btn-success">
             {{ __("Edit Student") }}
         </button>
+        &nbsp;&nbsp;&nbsp;
+        <a href="{{ url('/student') }}">  
+            <button type="button" class="btn btn-danger">Cancel</button>
+        </a>
     </form>
     </div>
     </div>
