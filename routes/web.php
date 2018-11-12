@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('company', 'CompanyController@index');
 Route::get('grade', 'GradeController@index');
+Route::get('listing', 'ListingController@index');
 Route::get('addcompany', 'CompanyController@indexaddcompany');
 Route::get('addgrade', 'GradeController@indexaddgrade');
 Route::get('addstudent', 'StudentController@indexaddstudent');

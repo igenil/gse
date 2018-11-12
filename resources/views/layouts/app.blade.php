@@ -36,7 +36,7 @@
                     <a class="navbar-brand"  href="{{ url('/grade') }}">Grades</a>
                     <a class="navbar-brand"  href="{{ url('/student') }}">Students</a>
                     <a class="navbar-brand"  href="{{ url('/petition') }}">Petitions</a>
-                    <a class="navbar-brand"  href="{{ url('/') }}">Listados</a>
+                    <a class="navbar-brand"  href="{{ url('/listing') }}">Listings</a>
                     </div>
                 </div>
 
