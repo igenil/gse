@@ -29,6 +29,7 @@ Route::get('addpetition/{id}', 'PetitionController@indexeditpetition');
 Route::get('editgrade/{id}', 'GradeController@indexeditgrade');
 Route::get('editcompany/{id}', 'CompanyController@indexeditcompany');
 Route::get('editstudent/{id}', 'StudentController@indexeditstudent');
+Route::get('editpetition/{id}', 'PetitionController@indexeditpetition');
 
 Route::post('addpetition', 'PetitionController@store');
 Route::post('addcompany', 'CompanyController@store');

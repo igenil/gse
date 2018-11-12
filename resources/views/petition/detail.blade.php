@@ -11,6 +11,7 @@
               <td>Number students</td>
               <td>Date</td>
               <td>
+              <td>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@
                     <button type="submit" class="btn btn-success">Add Petition</button>
                 </a>
             </td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
