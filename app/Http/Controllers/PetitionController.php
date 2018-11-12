@@ -14,7 +14,7 @@ class PetitionController extends Controller
     public function index()
     {
         $petition = petition::all();
-        return view("petition.detail",compact('petition'));
+        return view("petition.detail",compact('petitions'));
     }
 
     /**
