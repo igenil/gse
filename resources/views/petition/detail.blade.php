@@ -20,7 +20,7 @@
                 <td>{{$petition->id_company}}</td>
                 <td>{{$petition->id_grade}}</td>
                 <td>{{$petition->type}}</td>
-                <td>{{$petition->n_Students}}</td>
+                <td>{{$petition->n_students}}</td>
                 <td>{{$petition->created_at}}</td>
                 <td style="width:1%;">
                 <a href="editpetition/{{$petition->id}}">

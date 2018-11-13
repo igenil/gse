@@ -25,7 +25,7 @@
             <label for="n_Students" class="col-md-12 control-label">
                 {{ __("Number Students") }}
             </label>
-            <input id="n_Students" class="form-control" name="n_Students" value="{{ $petitions->n_Students }}" />
+            <input id="n_students" class="form-control" name="n_students" value="{{ $petitions->n_students }}" />
         </div>
     <table>
         <button type="submit" name="addpetition" class="btn btn-success">

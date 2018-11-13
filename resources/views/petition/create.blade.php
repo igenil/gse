@@ -24,11 +24,11 @@
         old('type') }}" />
         </div>
         <div class="form-group">
-            <label for="n_Students" class="col-md-12 control-label">
+            <label for="n_students" class="col-md-12 control-label">
                 {{ __("Number Students") }}
             </label>
-            <input id="n_Students" class="form-control" name="n_Students" value="{{
-        old('n_Students') }}" />
+            <input id="n_students" class="form-control" name="n_students" value="{{
+        old('n_students') }}" />
         </div>
     <table>
         <button type="submit" name="addpetition" class="btn btn-success">
