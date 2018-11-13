@@ -21,7 +21,7 @@ class CreatePetitionsTable extends Migration
             $table->unsignedInteger('id_grade');
             $table->foreign('id_grade')->references('id')->on('grades');
             $table->string('type');
-            $table->integer('n_Students');
+            $table->integer('n_students');
             $table->timestamps();
         });
     }
