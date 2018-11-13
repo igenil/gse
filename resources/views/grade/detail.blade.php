@@ -34,6 +34,9 @@
                 <a href="{{ url('/addgrade') }}">  
                     <button type="submit" class="btn btn-success">Add Grade</button>
                 </a>
+                <a href="#">  
+                    <button type="submit" class="btn btn-success">Add Student</button>
+                </a>
             </td>
             <td></td>
             <td></td>

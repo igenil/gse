@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\petition;
+use App\company;
+use App\grade;
 class PetitionController extends Controller
 {
     /**
@@ -20,7 +22,9 @@ class PetitionController extends Controller
     public function indexaddpetition()
     {
         $petitions = petition::all();
-        return view("petition.create");
+        $companies = company::all();
+        $grades = grade::all();
+        return view("petition.create", compact('companies','grades'));
     }
 
     public function indexeditpetition($id){
