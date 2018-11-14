@@ -10,4 +10,9 @@ class grade extends Model
     protected $fillable = [
         'id', 'name', 'level'
     ];
+
+    public function petition()
+    {
+         return $this->hasMany(petition::class); 
+    }
 }

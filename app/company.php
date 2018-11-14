@@ -10,5 +10,10 @@ class company extends Model
     protected $fillable = [
         'id', 'name', 'city', 'cp'
         ];
+
+        public function petitions()
+        {
+             return $this->hasMany(company::class);
+        }
 }
 

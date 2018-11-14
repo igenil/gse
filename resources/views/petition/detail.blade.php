@@ -17,8 +17,9 @@
         <tbody>
             @foreach($petitions as $petition)
             <tr>
-                <td>{{$petition->id_company}}</td>
-                <td>{{$petition->id_grade}}</td>
+
+                <td>{{ $petition->company->name }}</td>
+                <td>{{$petition->grade->name}}</td>
                 <td>{{$petition->type}}</td>
                 <td>{{$petition->n_students}}</td>
                 <td>{{$petition->created_at}}</td>
