@@ -22,6 +22,15 @@
             </label>
             <input id="age" class="form-control" name="age" value="{{ $students->age }}" />
         </div>
+        <label for="grade" class="col-md-12 control-label">
+                {{ __("Grade") }}
+        </label>        
+        <select id="id_grade" class="form-control" name="id_grade">
+            @foreach($grades as $grade)
+            <option value="{{$grade->id}}">{{$grade->name}}</option>
+            @endforeach
+        </select>
+        <br>
         <button type="submit" name="addstudent" class="btn btn-success">
             {{ __("Edit Student") }}
         </button>

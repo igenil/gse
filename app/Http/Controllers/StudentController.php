@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\student;
-
+use App\grade;
+use App\study;
 class StudentController extends Controller
 {
     /**
@@ -15,16 +16,19 @@ class StudentController extends Controller
     public function index()
     {
         $students = student::all();
+        
         return view("student.detail",compact('students'));
     }
     public function indexaddstudent()
     {
         $students = student::all();
-        return view("student.create");
+        $grades = grade::all();
+        return view("student.create",compact('grades'));
     }
     public function indexeditstudent($id){
         $students = student::find($id);
-        return view("student.edit", compact('students'));
+        $grades = grade::all();
+        return view("student.edit", compact('students','grades'));
     }
     /**
      * Show the form for creating a new resource.
@@ -44,7 +48,16 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        student::create(request()->all());
+        student::create([
+            'name'=>$request->name,
+            'lastname'=>$request->lastname,
+            'age'=>$request->age
+        ]);
+        $student = student::latest()->first();
+        study::create([
+            'id_grade'=>$request->id_grade,
+            'id_student'=>$student->id
+        ]);
         return redirect('/student')->with('message', ['success', __("Student created successfully")]);
     }
 
@@ -83,8 +96,12 @@ class StudentController extends Controller
         $students -> name = $request -> name;
         $students -> lastname = $request -> lastname;
         $students -> age = $request -> age;
-
         $students -> save();
+        $student = student::find($id);
+        study::create([
+            'id_grade'=>$request->id_grade,
+            'id_student'=>$student->id
+        ]);
         return redirect('/student')->with('message', ['success', __("Student edited successfully")]);
     }
 
