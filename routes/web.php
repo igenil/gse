@@ -30,6 +30,8 @@ Route::get('editgrade/{id}', 'GradeController@indexeditgrade');
 Route::get('editcompany/{id}', 'CompanyController@indexeditcompany');
 Route::get('editstudent/{id}', 'StudentController@indexeditstudent');
 Route::get('editpetition/{id}', 'PetitionController@indexeditpetition');
+Route::get('studies/{id}', 'StudyController@index')->name('studies');
+
 
 Route::post('addpetition', 'PetitionController@store');
 Route::post('addcompany', 'CompanyController@store');
@@ -40,6 +42,7 @@ Route::delete('petition/{id}', 'PetitionController@destroy');
 Route::delete('grade/{id}', 'GradeController@destroy');
 Route::delete('company/{id}', 'CompanyController@destroy');
 Route::delete('student/{id}', 'StudentController@destroy');
+Route::post('studies/{id}', 'StudyController@destroy')->name('deleteStudy');
 
 Route::post('editpetition/{id}', 'PetitionController@update');
 Route::post('editgrade/{id}', 'GradeController@update');

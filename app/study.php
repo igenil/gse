@@ -10,4 +10,14 @@ class study extends Model
     protected $fillable = [
         'id', 'id_student', 'id_grade'
     ];
+    public function student()
+    {
+         return $this->belongsTo(student::class, 'id_student');
+         
+    }
+
+    public function grade()
+    {
+         return $this->belongsTo(grade::class, 'id_grade'); 
+    }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\study;
+use App\student;
+use App\grade;
 
 class StudyController extends Controller
 {
@@ -11,9 +14,10 @@ class StudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $studies = study::where('id_student', $id)->with('student','grade')->get();
+        return view("study.detail", compact('studies'));
     }
 
     /**
@@ -79,6 +83,9 @@ class StudyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $studies = study::find($id);
+        $studies->delete();
+        $studies = study::all();
+        return back()->with('message', ['success', __("Student deleted to grade successfully")]);
     }
 }

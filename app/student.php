@@ -10,4 +10,8 @@ class student extends Model
     protected $fillable = [
         'id', 'name', 'lastname','age'
     ];
+    public function study()
+    {
+         return $this->hasMany(study::class); 
+    }
 }

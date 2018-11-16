@@ -15,4 +15,8 @@ class grade extends Model
     {
          return $this->hasMany(petition::class); 
     }
+    public function study()
+    {
+         return $this->hasMany(study::class); 
+    }
 }

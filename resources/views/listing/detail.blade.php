@@ -7,10 +7,10 @@
     <p style="font-size: 20px;">Petitions during the days</p>
     <br>
     Fecha Inicio:&nbsp;&nbsp;
-    <input id="date" type="date">
+    <input id="date" class = "form-control" value="{{ \Carbon\Carbon::tomorrow()->subYear()->format('Y-m-d') }}" type="date">
     &nbsp;&nbsp;&nbsp;
     Fecha Fin:&nbsp;&nbsp;
-    <input id="date" type="date">
+    <input id="date" class = "form-control" value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" type="date">
     <br>
     <br>
     <button class="btn btn-success"><span class="fas fa-search"></button>

@@ -18,11 +18,11 @@
             @foreach($petitions as $petition)
             <tr>
 
-                <td>{{ $petition->company->name }}</td>
+                <td>{{$petition->company->name }}</td>
                 <td>{{$petition->grade->name}}</td>
                 <td>{{$petition->type}}</td>
                 <td>{{$petition->n_students}}</td>
-                <td>{{$petition->created_at}}</td>
+                <td>{{$petition->created_at->format('Y-m-d')}}</td>
                 <td style="width:1%;">
                 <a href="editpetition/{{$petition->id}}">
                     <button class = "btn btn-primary"><span class="fas fa-pencil-alt" ></button></td>

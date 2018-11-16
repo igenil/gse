@@ -114,8 +114,13 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $students = student::find($id);
-        $students->delete();
-        $students = student::all();
-        return redirect('/student')->with('message', ['success', __("Student deleted successfully")]);
+        $studies = study::where('id_student', $id)->get();
+        if($studies->isEmpty()){
+            $students->delete();
+            $students = student::all();
+            return redirect('/student')->with('message', ['success', __("Student deleted successfully")]);
+        }else{
+            return redirect()->route('studies', ['id'=>$id]);
+        }
     }
 }
