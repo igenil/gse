@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\petition;
+use App\grade;
+use \PDF;
 class ListingController extends Controller
 {
     /**
@@ -13,18 +15,23 @@ class ListingController extends Controller
      */
     public function index()
     {
-        return view("listing.detail");
+        $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();
+        $petitions2=petition::where('id_grade',26)->get();
+        $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
+        $grades = grade::all();
+        return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
     }
-
-    public function indexaddpetition()
-    {
-        $petitions = petition::all();
-        return view("petition.create");
+    public function indexfechas($desde, $hasta){
+        $petitions=petition::whereBetween('created_at',[$desde,$hasta])->get();
+        return view("listing.detail",compact('petitions'));
     }
-
-    public function indexeditpetition($id){
-        $petitions = petition::find($id);
-        return view("petition.edit", compact('petitions'));
+    public function pdfs(){
+        $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();
+        $petitions2=petition::where('id_grade',26)->get();
+        $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
+        $grades = grade::all();
+        $pdf = PDF::loadView('listing.detail',compact('petitions','petitions2','petitions3','grades'));
+        return $pdf->download('pdf.pdf');
     }
     /**
      * Show the form for creating a new resource.
@@ -44,8 +51,7 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        Petition::create(request()->all());
-        return redirect('/petition')->with('message', ['success', __("Petition created successfully")]);
+
     }
 
     /**
@@ -77,17 +83,8 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $petition = petition::find($id);
-        $petition -> id_company = $request -> id_company;
-        $petition -> id_grade = $request -> id_grade;
-        $petition -> type = $request -> type;
-        $petition -> n_Students = $request -> n_Students;
-        $petition -> created_at = $request -> created_at;
-
-        $petition -> save();
-        return redirect('/petition')->with('message', ['success', __("Petition edited successfully")]);
     }
 
     /**
@@ -98,9 +95,6 @@ class ListingController extends Controller
      */
     public function destroy($id)
     {
-        $petitions = petition::find($id);
-        $petitions->delete();
-        $petitions = petition::all();
-        return redirect('/petition')->with('message', ['success', __("Petition deleted successfully")]);
+
     }
 }

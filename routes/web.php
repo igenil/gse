@@ -31,7 +31,7 @@ Route::get('editcompany/{id}', 'CompanyController@indexeditcompany');
 Route::get('editstudent/{id}', 'StudentController@indexeditstudent');
 Route::get('editpetition/{id}', 'PetitionController@indexeditpetition');
 Route::get('studies/{id}', 'StudyController@index')->name('studies');
-
+Route::get('listing/{desde}/{hasta}', 'PetitionController@indexfechas');
 
 Route::post('addpetition', 'PetitionController@store');
 Route::post('addcompany', 'CompanyController@store');
@@ -49,5 +49,6 @@ Route::post('editgrade/{id}', 'GradeController@update');
 Route::post('editcompany/{id}', 'CompanyController@update');
 Route::post('editstudent/{id}', 'StudentController@update');
 
+Route::get('pdf', 'ListingController@pdfs');
 Auth::routes();
 
