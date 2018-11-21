@@ -22,9 +22,25 @@ class ListingController extends Controller
         return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
     }
     public function indexfechas(Request $request){
-        dd($request -> date);
-        $petitions=petition::whereBetween('created_at',[$desde,$hasta])->get();
-        return view("listing.detail",compact('petitions'));
+        $petitions=petition::whereBetween('created_at',[$request -> date1,$request -> date2])->get();
+        $petitions2=petition::where('id_grade',26)->get();
+        $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
+        $grades = grade::all();
+        return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
+    }
+    public function indexgrades(Request $request){
+        $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();
+        $petitions2=petition::where('id_grade',$request-> id_grade)->get();
+        $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
+        $grades = grade::all();
+        return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
+    }
+    public function indexgradestype(Request $request){
+        $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();
+        $petitions2=petition::where('id_grade',$request-> id_grade)->get();
+        $petitions3=petition::where('id_grade',$request-> id_grade)->where('type', $request-> type)->get();
+        $grades = grade::all();
+        return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
     }
     public function pdfs(){
         $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();

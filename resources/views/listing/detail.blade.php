@@ -8,18 +8,14 @@
     <p style="font-size: 20px;">Petitions during the days:</p>
     <br> 
     <form method="POST" action="{{url('/listingFecha')}}">
+        {{ csrf_field() }}
         Start date:&nbsp;&nbsp;
-        <input id="date"  value="{{ \Carbon\Carbon::tomorrow()->subYear()->format('Y-m-d') }}" type="date">
+        <input id="date1"  name = "date1" value="{{ \Carbon\Carbon::tomorrow()->subYear()->format('Y-m-d') }}" type="date">
         &nbsp;&nbsp;&nbsp; 
         Finish date:&nbsp;&nbsp;
-        <input id="date2"  value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" type="date">
+        <input id="date2"  name = "date2" value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" type="date">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="">
-            <button class="btn btn-success"><span class="fas fa-search"></button>
-        </a>
-        <a>
-            <button class = "btn btn-primary"><span class="fas fa-print"></button>
-        </a>
+        <button type="submit" class="btn btn-success"><span class="fas fa-search"></button>
     </form>
     <br>
     <br>
@@ -32,7 +28,6 @@
                   <td>Number students</td>
                   <td>Date</td>
                   <td>
-                  <td>
                 </tr>
             </thead>
             <tbody>
@@ -43,13 +38,16 @@
                     <td>{{$petition->type}}</td>
                     <td>{{$petition->n_students}}</td>
                     <td>{{$petition->created_at->format('Y-m-d')}}</td>
-                    <td style="width:1%;">
-                    <td style="width:1%;">
-                    </td>
-                    </td>
+                    <td style="width:1%;"></td>
                 </tr>
                 @endforeach   
+                <td></td><td></td><td></td><td></td>
+                <td>
+                    <a href="{{ url('/pdf') }}">
+                        <button class = "btn btn-primary"><span class="fas fa-print"></button>
+                    </a>
                 </td>
+                <td></td>
             </tbody>
         </table>  
         <br>
@@ -60,19 +58,17 @@
 <div style="width: 80%; text-align: center; margin: 0 auto;"> 
     <p style="font-size: 20px;">Petitions according to grade:</p>
     <br>
-    Select grade:&nbsp;&nbsp;
-    <select id="id_grade"  name="id_grade">
-        @foreach($grades as $grade)
-        <option value="{{$grade->id}}">{{$grade->name}}</option>
-        @endforeach
-    </select>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="">
-        <button class="btn btn-success"><span class="fas fa-search"></button>
-    </a>
-    <a>
-        <button class = "btn btn-primary"><span class="fas fa-print"></button>
-    </a>
+    <form method="POST" action="{{url('/listingGrades')}}">
+        {{ csrf_field() }}
+        Select grade:&nbsp;&nbsp;
+        <select id="id_grade"  name="id_grade">
+            @foreach($grades as $grade)
+            <option value="{{$grade->id}}">{{$grade->name}}</option>
+            @endforeach
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-success"><span class="fas fa-search"></button>
+        </form>
     <br>
     <br>
         <table class="table table-striped table-hover" style="width: 80%; text-align: left; margin: 0 auto;">
@@ -83,7 +79,6 @@
                   <td>Type</td>
                   <td>Number students</td>
                   <td>Date</td>
-                  <td>
                   <td>
                 </tr>
             </thead>
@@ -96,12 +91,16 @@
                     <td>{{$petition2->n_students}}</td>
                     <td>{{$petition2->created_at->format('Y-m-d')}}</td>
                     <td style="width:1%;">
-                    <td style="width:1%;">
-                    </td>
                     </td>
                 </tr>
                 @endforeach   
+                <td></td><td></td><td></td><td></td>
+                <td>
+                    <a href="{{ url('/pdf') }}">
+                        <button class = "btn btn-primary"><span class="fas fa-print"></button>
+                    </a>
                 </td>
+                <td></td>
             </tbody>
         </table>  
         <br>
@@ -112,25 +111,24 @@
 <div style="width: 80%; text-align: center; margin: 0 auto;"> 
     <p style="font-size: 20px;">Petitions according to grade and type:</p>
     <br>
-    Select grade:&nbsp;&nbsp;
-    <select id="id_grade"  name="id_grade" >
-        @foreach($grades as $grade)
-        <option value="{{$grade->id}}">{{$grade->name}}</option>
-        @endforeach
-    </select>
-    &nbsp;&nbsp; Select type: &nbsp;&nbsp;
-    <select id="type" name="type" value="{{ old('type') }}">
+    <form method="POST" action="{{url('/listingGradesTypes')}}">
+        {{ csrf_field() }}
+        Select grade:&nbsp;&nbsp;
+        <select id="id_grade"  name="id_grade" >
+            @foreach($grades as $grade)
+            <option value="{{$grade->id}}">{{$grade->name}}</option>
+            @endforeach
+        </select>
+        &nbsp;&nbsp; Select type: &nbsp;&nbsp;
+        <select id="type" name="type" value="{{ old('type') }}">
             <option>DUAL</option>
             <option>FCT</option>
             <option>CONTRATO</option>
-    </select>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a  >
-        <button class="btn btn-success"><span class="fas fa-search"></button>
-    </a>
-    <a href="{{ url('/pdf') }}">
-        <button class = "btn btn-primary"><span class="fas fa-print"></button>
-    </a>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-success"><span class="fas fa-search"></button>
+        </form>
+        
     <br>
     <br>
         <table class="table table-striped table-hover" style="width: 80%; text-align: left; margin: 0 auto;">
@@ -142,7 +140,6 @@
                     <td>Number students</td>
                     <td>Date</td>
                     <td>
-                    <td>
                 </tr>
             </thead>
             <tbody>
@@ -153,13 +150,17 @@
                     <td>{{$petition3->type}}</td>
                     <td>{{$petition3->n_students}}</td>
                     <td>{{$petition3->created_at->format('Y-m-d')}}</td>
-                    <td style="width:1%;">
-                    <td style="width:1%;">
-                    </td>
-                    </td>
+                    <td style="width:1%;"></td>
+
                 </tr>
                 @endforeach   
+                <td></td><td></td><td></td><td></td>
+                <td>
+                    <a href="{{ url('/pdf') }}">
+                        <button class = "btn btn-primary"><span class="fas fa-print"></button>
+                    </a>
                 </td>
+                <td></td>
             </tbody>
         </table>  
         <br>

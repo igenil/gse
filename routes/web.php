@@ -32,7 +32,9 @@ Route::get('editstudent/{id}', 'StudentController@indexeditstudent');
 Route::get('editpetition/{id}', 'PetitionController@indexeditpetition');
 Route::get('studies/{id}', 'StudyController@index')->name('studies');
 
-Route::post('listingFecha', 'PetitionController@indexfechas');
+Route::post('listingFecha', 'ListingController@indexfechas');
+Route::post('listingGrades', 'ListingController@indexgrades');
+Route::post('listingGradesTypes', 'ListingController@indexgradestype');
 
 Route::post('addpetition', 'PetitionController@store');
 Route::post('addcompany', 'CompanyController@store');
