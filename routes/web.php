@@ -31,7 +31,8 @@ Route::get('editcompany/{id}', 'CompanyController@indexeditcompany');
 Route::get('editstudent/{id}', 'StudentController@indexeditstudent');
 Route::get('editpetition/{id}', 'PetitionController@indexeditpetition');
 Route::get('studies/{id}', 'StudyController@index')->name('studies');
-Route::get('listing/{desde}/{hasta}', 'PetitionController@indexfechas');
+
+Route::post('listingFecha', 'PetitionController@indexfechas');
 
 Route::post('addpetition', 'PetitionController@store');
 Route::post('addcompany', 'CompanyController@store');

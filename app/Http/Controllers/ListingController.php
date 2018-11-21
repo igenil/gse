@@ -21,7 +21,8 @@ class ListingController extends Controller
         $grades = grade::all();
         return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
     }
-    public function indexfechas($desde, $hasta){
+    public function indexfechas(Request $request){
+        dd($request -> date);
         $petitions=petition::whereBetween('created_at',[$desde,$hasta])->get();
         return view("listing.detail",compact('petitions'));
     }

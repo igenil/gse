@@ -4,20 +4,23 @@
 <br>
 <br>
 <div style="width: 80%; text-align: center; margin: 0 auto;"> 
+    
     <p style="font-size: 20px;">Petitions during the days:</p>
     <br> 
-    Start date:&nbsp;&nbsp;
-    <input id="date"  value="{{ \Carbon\Carbon::tomorrow()->subYear()->format('Y-m-d') }}" type="date">
-    &nbsp;&nbsp;&nbsp; 
-    Finish date:&nbsp;&nbsp;
-    <input id="date2"  value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" type="date">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="">
-        <button class="btn btn-success"><span class="fas fa-search"></button>
-    </a>
-    <a>
-        <button class = "btn btn-primary"><span class="fas fa-print"></button>
-    </a>
+    <form method="POST" action="{{url('/listingFecha')}}">
+        Start date:&nbsp;&nbsp;
+        <input id="date"  value="{{ \Carbon\Carbon::tomorrow()->subYear()->format('Y-m-d') }}" type="date">
+        &nbsp;&nbsp;&nbsp; 
+        Finish date:&nbsp;&nbsp;
+        <input id="date2"  value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" type="date">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">
+            <button class="btn btn-success"><span class="fas fa-search"></button>
+        </a>
+        <a>
+            <button class = "btn btn-primary"><span class="fas fa-print"></button>
+        </a>
+    </form>
     <br>
     <br>
         <table class="table table-striped table-hover" style="width: 80%; text-align: left; margin: 0 auto;">
