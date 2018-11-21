@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\grade;
+use App\Http\Requests\GradeRequest;
 
 class GradeController extends Controller
 {
@@ -43,7 +44,7 @@ class GradeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GradeRequest $request)
     {
         Grade::create(request()->all());
         return redirect('/grade')->with('message', ['success', __("Grade created successfully")]);
@@ -78,7 +79,7 @@ class GradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GradeRequest $request, $id)
     {
         $grade = grade::find($id);
         $grade -> name = $request -> name;

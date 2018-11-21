@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\student;
 use App\grade;
 use App\study;
+use App\Http\Requests\StudentRequest;
+
 class StudentController extends Controller
 {
     /**
@@ -46,7 +48,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
         student::create([
             'name'=>$request->name,

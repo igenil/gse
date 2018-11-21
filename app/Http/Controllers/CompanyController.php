@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\company;
+use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -44,9 +45,9 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(CompanyRequest $request)
     {
-        Company::create(request()->all());
+        Company::create($request->all());
 
         return redirect('/company')->with('message', ['success', __("Company created successfully")]);
     }
