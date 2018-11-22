@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\grade;
 use App\Http\Requests\GradeRequest;
-
+use App\petition;
 class GradeController extends Controller
 {
     /**
@@ -98,8 +98,13 @@ class GradeController extends Controller
     public function destroy($id)
     {
         $grades = grade::find($id);
-        $grades->delete();
-        $grades = grade::all();
-        return redirect('/grade')->with('message', ['success', __("Grade deleted successfully")]);
+        $petition = petition::where('id_grade', $id)->get();
+        if($petition->isEmpty()){
+            $grades->delete();
+            $grades = grade::all();
+            return redirect('/grade')->with('message', ['success', __("Grade deleted successfully")]);
+        }else{
+            return redirect('/grade')->with('message', ['danger', __("This grade have active petitions")]);
+        }     
     }
 }

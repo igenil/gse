@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\company;
 use App\Http\Requests\CompanyRequest;
-
+use App\petition;
 class CompanyController extends Controller
 {
     /**
@@ -100,8 +100,13 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         $companies = company::find($id);
-        $companies->delete();
-        $companies = company::all();
-        return redirect('/company')->with('message', ['success', __("Company deleted successfully")]);
+        $petition = petition::where('id_company', $id)->get();
+        if($petition->isEmpty()){
+            $companies->delete();
+            $companies = company::all();
+            return redirect('/company')->with('message', ['success', __("Company deleted successfully")]);
+        }else{
+            return redirect('/company')->with('message', ['danger', __("This company have active petitions")]);
+        } 
     }
 }
