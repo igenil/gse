@@ -22,7 +22,11 @@
             <label for="level" class="col-md-12 control-label">
                 {{ __("Level") }}
             </label>
-            <input id="level" class="form-control" name="level" value="{{$grades->level }}" />
+            <select id="level" class="form-control" name="level" value="{{ old('level') }}">
+                <option>SUPERIOR</option>
+                <option>MEDIO</option>
+                <option>BASICA</option>
+            </select>
         </div>
     <table>
         <button type="submit" name="addgrade" class="btn btn-success">

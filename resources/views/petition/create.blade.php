@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+@if (count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li> {{ $error }} </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div style="width: 80%; text-align: left; margin: 0 auto;">
     <form method="POST" action="{{url('/addpetition')}}">
         {{ csrf_field() }}
@@ -37,7 +46,7 @@
             <label for="n_students" class="col-md-12 control-label">
                 {{ __("Number Students") }}
             </label>
-            <input id="n_students" type= "number" class="form-control" name="n_students" value="{{
+            <input id="n_students" type= "number" min='1' class="form-control" name="n_students" value="{{
         old('n_students') }}" />
         </div>
     <table>
