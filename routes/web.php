@@ -52,6 +52,6 @@ Route::post('editgrade/{id}', 'GradeController@update');
 Route::post('editcompany/{id}', 'CompanyController@update');
 Route::post('editstudent/{id}', 'StudentController@update');
 
-Route::get('pdf/{type}/{from}/{to}', 'ListingController@pdfs')->name('pdf');;
+Route::get('pdf/{type}/{from}/{to}/{grade}/{typegrade}', 'ListingController@pdfs')->name('pdf');;
 Auth::routes();
 
