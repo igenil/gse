@@ -43,9 +43,10 @@
                 @endforeach   
                 <td></td><td></td><td></td><td></td>
                 <td>
-                    <a href="{{ url('/pdf') }}">
-                        <button class = "btn btn-primary"><span class="fas fa-print"></button>
-                    </a>
+                <form action="{{route('pdf', ['type'=> 'date','to'=> $to, 'from' => $from])}}">
+                    {{csrf_field()}}
+                    <button  type="submit" class = "btn btn-primary"><span class="fas fa-print"></button>
+                </form>
                 </td>
                 <td></td>
             </tbody>
@@ -96,7 +97,7 @@
                 @endforeach   
                 <td></td><td></td><td></td><td></td>
                 <td>
-                    <a href="{{ url('/pdf') }}">
+                    {{-- <a href="{{ route('pdf', ['petitions' => $petitions2]) }}"> --}}
                         <button class = "btn btn-primary"><span class="fas fa-print"></button>
                     </a>
                 </td>
@@ -156,7 +157,7 @@
                 @endforeach   
                 <td></td><td></td><td></td><td></td>
                 <td>
-                    <a href="{{ url('/pdf') }}">
+                    {{-- <a href="{{ route('pdf', ['petitions' => $petitions3]) }}"> --}}
                         <button class = "btn btn-primary"><span class="fas fa-print"></button>
                     </a>
                 </td>

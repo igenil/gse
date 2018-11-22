@@ -19,14 +19,18 @@ class ListingController extends Controller
         $petitions2=petition::where('id_grade',26)->get();
         $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
         $grades = grade::all();
-        return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
+        $from=\Carbon\Carbon::tomorrow()->subYear();
+        $to=\Carbon\Carbon::tomorrow();
+        return view("listing.detail",compact('petitions','petitions2','petitions3','grades','from','to'));
     }
     public function indexfechas(Request $request){
         $petitions=petition::whereBetween('created_at',[$request -> date1,$request -> date2])->get();
         $petitions2=petition::where('id_grade',26)->get();
         $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
         $grades = grade::all();
-        return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
+        $to=$request -> date1;
+        $from=$request -> date2;
+        return view("listing.detail",compact('petitions','petitions2','petitions3','grades','to','from'));
     }
     public function indexgrades(Request $request){
         $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();
@@ -42,12 +46,9 @@ class ListingController extends Controller
         $grades = grade::all();
         return view("listing.detail",compact('petitions','petitions2','petitions3','grades'));
     }
-    public function pdfs(){
-        $petitions=petition::whereBetween('created_at',[\Carbon\Carbon::tomorrow()->subYear(),\Carbon\Carbon::tomorrow()])->get();
-        $petitions2=petition::where('id_grade',26)->get();
-        $petitions3=petition::where('id_grade',26)->where('type', 'DUAL')->get();
-        $grades = grade::all();
-        $pdf = PDF::loadView('listing.detail',compact('petitions','petitions2','petitions3','grades'));
+    public function pdfs($type,$from,$to){
+        dd($to);
+        $pdf = PDF::loadView('listing.PDF',compact('petitions'));
         return $pdf->download('pdf.pdf');
     }
     /**
