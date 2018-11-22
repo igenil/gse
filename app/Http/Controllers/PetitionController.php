@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\petition;
 use App\company;
 use App\grade;
+use App\Http\Requests\PetitionsRequest;
+
 class PetitionController extends Controller
 {
     /**
@@ -29,7 +31,9 @@ class PetitionController extends Controller
 
     public function indexeditpetition($id){
         $petitions = petition::find($id);
-        return view("petition.edit", compact('petitions'));
+        $companies = company::all();
+        $grades = grade::all();
+        return view("petition.edit", compact('petitions','companies','grades'));
     }
     /**
      * Show the form for creating a new resource.
@@ -47,7 +51,7 @@ class PetitionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetitionsRequest $request)
     {
         Petition::create(request()->all());
         return redirect('/petition')->with('message', ['success', __("Petition created successfully")]);
@@ -88,7 +92,7 @@ class PetitionController extends Controller
         $petition -> id_company = $request -> id_company;
         $petition -> id_grade = $request -> id_grade;
         $petition -> type = $request -> type;
-        $petition -> n_Students = $request -> n_Students;
+        $petition -> n_students = $request -> n_students;
         $petition -> created_at = $request -> created_at;
 
         $petition -> save();
