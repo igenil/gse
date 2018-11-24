@@ -14,9 +14,8 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-
-
-Route::get('company', 'CompanyController@index');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('company', 'CompanyController@index');
 Route::get('grade', 'GradeController@index');
 Route::get('listing', 'ListingController@index');
 Route::get('addcompany', 'CompanyController@indexaddcompany');
@@ -53,5 +52,7 @@ Route::post('editcompany/{id}', 'CompanyController@update');
 Route::post('editstudent/{id}', 'StudentController@update');
 
 Route::get('pdf/{type}/{from}/{to}/{grade}/{typegrade}', 'ListingController@pdfs')->name('pdf');;
+});
+
 Auth::routes();
 
